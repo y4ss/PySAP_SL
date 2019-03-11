@@ -1,7 +1,7 @@
 # PySAP_SL
 > Automation module for source list in SAP
 
-This automation module has been created to ease the creation automation script for source list in SAP.
+This automation module has been created to ease the creation of automation script for source list in SAP.
 
 It can perform creation, modification, deletion and extraction task for source list.
 
