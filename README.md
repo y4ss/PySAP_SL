@@ -19,7 +19,7 @@ To be continued
 
 ## Meta
 
-Yacine BEKKA – [@LinkedIn](www.linkedin.com/in/yacine-bekka-519b79146) – yacinebekka@yahoo.fr
+Yacine BEKKA – [Linkedin](https://www.linkedin.com/in/yacine-bekka-519b79146) – yacinebekka@yahoo.fr
 
 Distributed under MIT license. See ``LICENSE`` for more information.
 
