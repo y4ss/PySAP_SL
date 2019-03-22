@@ -1,0 +1,28 @@
+[general]
+sap_system_name =
+date_format_in_sap = %d.%m.%Y #Should be strftime args
+
+[default_sl]
+valid_from = today
+valid_to = 31.12.9999
+vendor =
+porg = 
+vendor_plant =
+unit = 
+agreement_nb = 
+agreement_item = 0
+fixed = FALSE
+blocked = FALSE
+mrp =
+
+[test]
+sap_system_name = E2Q300
+material = 10014082
+plant = 2006
+vendor1 = ICP1010
+vendor_plant1 = 1010
+porg1 = 1000
+vendor2 = ICP2001
+vendor_plant2 = 2001
+porg2 = 1000
+

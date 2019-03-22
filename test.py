@@ -3,6 +3,11 @@ import utils.sapsession
 import SL.SL
 import utils.DEFAULT
 import unittest
+import configparser
+
+cfg = configparser.ConfigParser()
+cfg.read('config.txt')
+test_config = cfg['test']
 
 class datadictTest(unittest.TestCase):
 
@@ -21,7 +26,7 @@ class SapSessionTest(unittest.TestCase):
     "Should be run with correct SAP system running too"
 
     def setUp(self):
-        self.app = utils.sapsession.SapSession("E2Q300")
+        self.app = utils.sapsession.SapSession(test_config.get('sap_system_name'))
         
     def test_attach(self):
         self.assertTrue(self.app.Session)
@@ -37,8 +42,8 @@ class SapSessionTest(unittest.TestCase):
 class SLTest(unittest.TestCase):
     
     def setUp(self):
-        self.app = utils.sapsession.SapSession("E2Q300")
-        self.source_list = SL.SL.SL("10014082","2006",self.app)
+        self.app = utils.sapsession.SapSession(test_config.get('sap_system_name'))
+        self.source_list = SL.SL.SL(test_config.get('material'),test_config.get('plant'),self.app)
         
     def test_isexist(self):
         tst = self.source_list.is_exist()
@@ -60,22 +65,23 @@ class SLTest(unittest.TestCase):
 
     def test_create_n_extract(self):
         ext = None
-        self.source_list.update_data([{'Vendor' : "ICP1010", "POrg" : '1000', "Vendor Plant" : '1010'}])
+        self.source_list.update_data([{'Vendor' : test_config.get('vendor1'), "POrg" : test_config.get('porg1'), "Vendor Plant" : test_config.get('vendor_plant1')}])
         self.source_list.create_sl()
         tst = self.app.verify_transaction_success()
+        print(tst)
         self.assertTrue(tst)
         
         ext = self.source_list.extract_sl()[0]
         self.assertEqual(ext, self.source_list.Data)
 
-        self.source_list.update_data([{'Blocked': True},{"Vendor" : "ICP2001","POrg" : "1000", "Vendor Plant" : '2001'}])
+        self.source_list.update_data([{'Blocked': True},{"Vendor" : test_config.get('vendor2'),"POrg" : test_config.get('porg2'), "Vendor Plant" : test_config.get('vendor_plant2')}])
         self.source_list.update_sl()
         ext = self.source_list.extract_sl()[0]
         self.assertEqual(ext, self.source_list.Data)
         
         self.source_list.delete_sl(delete_all=True)
-        tst = self.app.verify_transaction_success()
-        self.assertTrue(tst)
+        tst2 = self.app.verify_transaction_success()
+        self.assertTrue(tst2)
         ext = self.source_list.extract_sl()[1]
         self.assertEqual(ext, 0)
         
