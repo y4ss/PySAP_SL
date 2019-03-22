@@ -10,7 +10,10 @@ The module leverage SAP GUI Scripting API in order to perform action in SAP.
 
 ## Installation
 
-You can install the package using pip install PySAP-SL
+```
+pip install PySAP_SL 
+
+```
 
 Then you will have to modify the configuration file (can be found under path/to/conf.txt) and add the name of your SAP system, the date format and the default value for source list.
 
