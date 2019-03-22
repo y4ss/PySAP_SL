@@ -8,18 +8,23 @@ HERE = pathlib.Path(__file__).parent
 README = (HERE / "README.md").read_text()
 
 # This call to setup() does all the work
-setup(name="PySAP_SL",
-version="0.1.0",
-description="Automation tool for source list in SAP",
-long_description=README,
-long_description_content_type="text/markdown",
-url="https://github.com/y4ss/PySAP_SL",
-author="Yacine BEKKA",
-author_email="yacinebekka@yahoo.fr",
-license="MIT",
-classifiers=["License :: OSI Approved :: MIT License",
-"Programming Language :: Python :: 3",
-"Operating System :: Windows",],
-packages=find_packages(exclude=("test",)),
-include_package_data=True,
-install_requires=["win32com.client", "copy"])
+setup(
+      name="PySAP_SL",
+      version="0.1.0",
+      description="Automation tool for source list in SAP",
+      long_description=README,
+      long_description_content_type="text/markdown",
+      url="https://github.com/y4ss/PySAP_SL",
+      author="Yacine BEKKA",
+      author_email="yacinebekka@yahoo.fr",
+      license="MIT",
+      classifiers=[
+          "License :: OSI Approved :: MIT License",
+          "Programming Language :: Python :: 3",
+          "DEVELOPMENT STATUS :: 3 - ALPHA",
+          "OPERATING SYSTEM :: MICROSOFT :: WINDOWS",
+      ],
+      packages=find_packages(exclude=("test",)),
+      include_package_data=True,
+      install_requires=["win32com.client", "copy"]
+)
